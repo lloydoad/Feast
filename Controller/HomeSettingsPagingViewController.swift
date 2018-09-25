@@ -14,6 +14,10 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
     var homeButton: UIButton!
     var settingsButton: UIButton!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         self.collectionView.backgroundColor = MAIN_BACKGROUND_COLOR
         self.collectionView.isPagingEnabled = true
@@ -64,10 +68,10 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
     @objc func pageToOtherView(sender: UIButton) {
         if sender.tag == 0 {
             guard collectionView.contentOffset.x != 0 else {return}
-            print("Go home")
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: true)
         } else {
             guard collectionView.contentOffset.x != view.frame.width else {return}
-            print("Go settings")
+            collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
     
@@ -86,7 +90,8 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
+            cell.homeBackground.image = UIImage(named: "taco_background")
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "example", for: indexPath)

@@ -39,3 +39,23 @@ extension UIColor {
         return (red, green, blue, alpha)
     }
 }
+
+// bound one view to another3
+func boundEdges(of child: UIView, to parent: UIView, with borders: UIEdgeInsets) {
+    child.translatesAutoresizingMaskIntoConstraints = false
+    parent.addSubview(child)
+    child.topAnchor.constraint(equalTo: parent.topAnchor, constant: borders.top).isActive = true
+    child.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -borders.bottom).isActive = true
+    child.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: borders.left).isActive = true
+    child.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -borders.right).isActive = true
+}
+
+func getPresetUIStackView(axis: NSLayoutConstraint.Axis, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution, spacing: CGFloat) -> UIStackView {
+    let stack = UIStackView()
+    stack.axis = axis
+    stack.alignment = alignment
+    stack.distribution = distribution
+    stack.spacing = spacing
+    stack.translatesAutoresizingMaskIntoConstraints = false
+    return stack
+}
