@@ -14,6 +14,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     var homeBackground: UIImageView!
     var mainTitleTag: UILabel!
     var mainTitle: UILabel!
+    var searchButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,6 +27,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         setupBackground()
         setupShaders()
+        setupSearchButton()
         setupLabels()
     }
     
@@ -75,28 +77,48 @@ class HomeCollectionViewCell: UICollectionViewCell {
         topShader.layer.insertSublayer(topGradientLayer, at: 0)
     }
     
-    func setupLabels() {
-        let verticalStack = getPresetUIStackView(axis: .vertical, alignment: .leading, distribution: .fill, spacing: 0)
+    func setupSearchButton() {
+        searchButton = UIButton(type: .system)
+        searchButton.setAttributedTitle(NSAttributedString(string: "Search For More", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .light), NSAttributedString.Key.foregroundColor: SHADOW_ORANGE_COLOR]), for: .normal)
         
-        contentView.addSubview(verticalStack)
-        verticalStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
-        verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100).isActive = true
-        verticalStack.widthAnchor.constraint(greaterThanOrEqualToConstant: 221).isActive = true
-        verticalStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 103).isActive = true
+        self.contentView.addSubview(searchButton)
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -28).isActive = true
+        searchButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+    }
+    
+    func setupLabels() {
+        mainTitle = UILabel()
+        mainTitle.textColor = .white
+        mainTitle.font = UIFont.systemFont(ofSize: 78, weight: .ultraLight)
+        mainTitle.text = "TACOS"
+        mainTitle.numberOfLines = 0
+        
+        self.contentView.addSubview(mainTitle)
+        mainTitle.translatesAutoresizingMaskIntoConstraints = false
+        mainTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
+        mainTitle.bottomAnchor.constraint(equalTo: self.searchButton.topAnchor, constant: -17).isActive = true
         
         mainTitleTag = UILabel()
-        mainTitleTag.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         mainTitleTag.textColor = .white
-        mainTitleTag.layer.borderColor = UIColor.white.cgColor
-        mainTitleTag.layer.borderWidth = 1.5
+        mainTitleTag.textAlignment = .center
+        mainTitleTag.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        mainTitleTag.numberOfLines = 1
         mainTitleTag.text = "CHEAP EATS"
+        mainTitleTag.clipsToBounds = false
         
-        mainTitle = UILabel()
-        mainTitle.font = UIFont.systemFont(ofSize: 78, weight: .ultraLight)
-        mainTitle.textColor = .white
-        mainTitle.text = "TACOS"
+        let xPadding: CGFloat = 5
+        let yPadding: CGFloat = 2
+        self.contentView.addSubview(mainTitleTag)
+        mainTitleTag.translatesAutoresizingMaskIntoConstraints = false
+        mainTitleTag.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30 + xPadding).isActive = true
+        mainTitleTag.bottomAnchor.constraint(equalTo: self.mainTitle.topAnchor, constant: -yPadding).isActive = true
         
-        verticalStack.addArrangedSubview(mainTitleTag)
-        verticalStack.addArrangedSubview(mainTitle)
+        let border = UIView()
+        border.backgroundColor = .clear
+        border.layer.borderColor = UIColor.white.cgColor
+        border.layer.borderWidth = 1.5
+        boundEdges(of: border, to: mainTitleTag, with: UIEdgeInsets(top: -yPadding, left: -xPadding, bottom: -yPadding, right: -xPadding))
+        
     }
 }
