@@ -119,6 +119,5 @@ class HomeCollectionViewCell: UICollectionViewCell {
         border.layer.borderColor = UIColor.white.cgColor
         border.layer.borderWidth = 1.5
         boundEdges(of: border, to: mainTitleTag, with: UIEdgeInsets(top: -yPadding, left: -xPadding, bottom: -yPadding, right: -xPadding))
-        
     }
 }

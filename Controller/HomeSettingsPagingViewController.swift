@@ -25,8 +25,8 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
         setupHeader()
         setupButtons()
         
-        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "example")
         self.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        self.collectionView.register(SettingsCollectionCellView.self, forCellWithReuseIdentifier: SettingsCollectionCellView.identifier)
     }
     
     func setupHeader() {
@@ -94,8 +94,7 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
             cell.homeBackground.image = UIImage(named: "taco_background")
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "example", for: indexPath)
-            cell.backgroundColor = MAIN_BACKGROUND_COLOR
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionCellView.identifier, for: indexPath)
             return cell
         }
     }
