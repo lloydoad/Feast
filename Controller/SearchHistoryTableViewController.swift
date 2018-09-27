@@ -28,5 +28,4 @@ class SearchHistoryTableViewController: UITableViewController {
     @objc func dismissSearchHistory() {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

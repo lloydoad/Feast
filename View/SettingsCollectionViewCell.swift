@@ -1,5 +1,5 @@
 //
-//  SettingsCollectionCellView.swift
+//  SettingsCollectionViewCell.swift
 //  Feast
 //
 //  Created by Lloyd Dapaah on 9/26/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsCollectionCellView: UICollectionViewCell {
+class SettingsCollectionViewCell: UICollectionViewCell {
     static let identifier = "SettingsCollectionCellView"
     
     var reSyncButton: UIButton!
@@ -34,15 +34,17 @@ class SettingsCollectionCellView: UICollectionViewCell {
         reSyncButton = UIButton(type: .system)
         reSyncButton.setAttributedTitle(NSAttributedString(string: "Re-Sync", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .light), NSAttributedString.Key.foregroundColor: SHADOW_ORANGE_COLOR]), for: .normal)
         
+        let syncedIndicatorLabel = getBasicFormattedLabel(defaultText: "Synced", with: 18, of: .light, and: SHADOW_ORANGE_COLOR)
+        
+        timeSinceLastSync = getBasicFormattedLabel(defaultText: "xx mins ago", with: 18, of: .light, and: .white)
+        
+        let syncTimerHorizontalStack = getPresetUIStackView(axis: .horizontal, alignment: .center, distribution: .fillProportionally, spacing: 10)
+        
         self.contentView.addSubview(reSyncButton)
         reSyncButton.translatesAutoresizingMaskIntoConstraints = false
         reSyncButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
         reSyncButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -45).isActive = true
         
-        let syncedIndicatorLabel = getBasicFormattedLabel(defaultText: "Synced", with: 18, of: .light, and: SHADOW_ORANGE_COLOR)
-        timeSinceLastSync = getBasicFormattedLabel(defaultText: "xx mins ago", with: 18, of: .light, and: .white)
-        
-        let syncTimerHorizontalStack = getPresetUIStackView(axis: .horizontal, alignment: .center, distribution: .fillProportionally, spacing: 10)
         syncTimerHorizontalStack.addArrangedSubview(syncedIndicatorLabel)
         syncTimerHorizontalStack.addArrangedSubview(timeSinceLastSync)
         

@@ -26,7 +26,7 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
         setupButtons()
         
         self.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-        self.collectionView.register(SettingsCollectionCellView.self, forCellWithReuseIdentifier: SettingsCollectionCellView.identifier)
+        self.collectionView.register(SettingsCollectionViewCell.self, forCellWithReuseIdentifier: SettingsCollectionViewCell.identifier)
     }
     
     func setupHeader() {
@@ -77,7 +77,6 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         xPositionOfHeaderUnderlineConstraint.constant = ((collectionView.contentOffset.x / 3.125) - 60)
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -94,7 +93,7 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
             cell.homeBackground.image = UIImage(named: "taco_background")
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionCellView.identifier, for: indexPath) as! SettingsCollectionCellView
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionViewCell.identifier, for: indexPath) as! SettingsCollectionViewCell
             cell.searchHistoryButton.addTarget(self, action: #selector(presentSearchHistoryView), for: .touchUpInside)
             return cell
         }
