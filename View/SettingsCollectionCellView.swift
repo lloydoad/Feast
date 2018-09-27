@@ -15,6 +15,7 @@ class SettingsCollectionCellView: UICollectionViewCell {
     var timeSinceLastSync: UILabel!
     var syncSwitchControl: UISwitch!
     var searchMileSlideControl: UISlider!
+    var searchHistoryButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +37,7 @@ class SettingsCollectionCellView: UICollectionViewCell {
         self.contentView.addSubview(reSyncButton)
         reSyncButton.translatesAutoresizingMaskIntoConstraints = false
         reSyncButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 30).isActive = true
-        reSyncButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -55).isActive = true
+        reSyncButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -45).isActive = true
         
         let syncedIndicatorLabel = getBasicFormattedLabel(defaultText: "Synced", with: 18, of: .light, and: SHADOW_ORANGE_COLOR)
         timeSinceLastSync = getBasicFormattedLabel(defaultText: "xx mins ago", with: 18, of: .light, and: .white)
@@ -80,14 +81,16 @@ class SettingsCollectionCellView: UICollectionViewCell {
         let searchRadiusVerticalStack = getPresetUIStackView(axis: .vertical, alignment: .fill, distribution: .fillProportionally, spacing: 0)
         add(ArrangedSubviews: [mileMarkHorizontalStack, searchMileSlideControl], to: searchRadiusVerticalStack)
         
-        let searchHistoryButton = UIButton(type: .system)
+        let searchHistoryHorizontalStack = getPresetUIStackView(axis: .horizontal, alignment: .leading, distribution: .fill, spacing: 2)
+        searchHistoryButton = UIButton(type: .system)
         searchHistoryButton.setAttributedTitle(NSAttributedString(string: "Search History", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .light), NSAttributedString.Key.foregroundColor: SHADOW_ORANGE_COLOR]), for: .normal)
+        add(ArrangedSubviews: [searchHistoryButton, UIView()], to: searchHistoryHorizontalStack)
         
         let mainSettingVerticalStack = getPresetUIStackView(axis: .vertical, alignment: .fill, distribution: .fillEqually, spacing: 30)
         mainSettingVerticalStack.addArrangedSubview(gpsAutoSyncHorizontalStack)
         mainSettingVerticalStack.addArrangedSubview(searchRadiusTitleLabel)
         mainSettingVerticalStack.addArrangedSubview(searchRadiusVerticalStack)
-        mainSettingVerticalStack.addArrangedSubview(searchHistoryButton)
+        mainSettingVerticalStack.addArrangedSubview(searchHistoryHorizontalStack)
         
         self.contentView.addSubview(mainSettingVerticalStack)
         mainSettingVerticalStack.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 113).isActive = true
@@ -95,18 +98,5 @@ class SettingsCollectionCellView: UICollectionViewCell {
         mainSettingVerticalStack.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -30).isActive = true
         mainSettingVerticalStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
     }
-    
-    func getBasicFormattedLabel(defaultText: String, with size: CGFloat, of weight: UIFont.Weight, and color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.text = defaultText
-        label.textColor = color
-        label.font = UIFont.systemFont(ofSize: size, weight: weight)
-        return label
-    }
-    
-    func add(ArrangedSubviews: [UIView], to stack: UIStackView) {
-        for view in ArrangedSubviews {
-            stack.addArrangedSubview(view)
-        }
-    }
+
 }

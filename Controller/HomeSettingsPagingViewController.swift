@@ -94,12 +94,18 @@ class HomeSettingsPagingViewController: UICollectionViewController, UICollection
             cell.homeBackground.image = UIImage(named: "taco_background")
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionCellView.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionCellView.identifier, for: indexPath) as! SettingsCollectionCellView
+            cell.searchHistoryButton.addTarget(self, action: #selector(presentSearchHistoryView), for: .touchUpInside)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    @objc func presentSearchHistoryView() {
+        let searchHistoryNavigationView = UINavigationController(rootViewController: SearchHistoryTableViewController())
+        self.present(searchHistoryNavigationView, animated: true, completion: nil)
     }
 }

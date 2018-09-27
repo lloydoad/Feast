@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C24E44E215C9B130039CEB4 /* SearchHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24E44D215C9B130039CEB4 /* SearchHistoryTableViewController.swift */; };
 		4C59E02C2159A87C00236ABB /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C59E02B2159A87C00236ABB /* HomeCollectionViewCell.swift */; };
 		4C59E02E215A820800236ABB /* PaddedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C59E02D215A820800236ABB /* PaddedUILabel.swift */; };
 		4C66AD67215C217F00872A5E /* SettingsCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C66AD66215C217F00872A5E /* SettingsCollectionCellView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C24E44D215C9B130039CEB4 /* SearchHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewController.swift; sourceTree = "<group>"; };
 		4C59E02B2159A87C00236ABB /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C59E02D215A820800236ABB /* PaddedUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
 		4C66AD66215C217F00872A5E /* SettingsCollectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionCellView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4C67287021599B5D000D397A /* HomeSettingsPagingViewController.swift */,
+				4C24E44D215C9B130039CEB4 /* SearchHistoryTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C24E44E215C9B130039CEB4 /* SearchHistoryTableViewController.swift in Sources */,
 				4C66AD67215C217F00872A5E /* SettingsCollectionCellView.swift in Sources */,
 				4C59E02E215A820800236ABB /* PaddedUILabel.swift in Sources */,
 				4C59E02C2159A87C00236ABB /* HomeCollectionViewCell.swift in Sources */,

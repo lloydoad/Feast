@@ -59,3 +59,17 @@ func getPresetUIStackView(axis: NSLayoutConstraint.Axis, alignment: UIStackView.
     stack.translatesAutoresizingMaskIntoConstraints = false
     return stack
 }
+
+func getBasicFormattedLabel(defaultText: String, with size: CGFloat, of weight: UIFont.Weight, and color: UIColor) -> UILabel {
+    let label = UILabel()
+    label.text = defaultText
+    label.textColor = color
+    label.font = UIFont.systemFont(ofSize: size, weight: weight)
+    return label
+}
+
+func add(ArrangedSubviews: [UIView], to stack: UIStackView) {
+    for view in ArrangedSubviews {
+        stack.addArrangedSubview(view)
+    }
+}
